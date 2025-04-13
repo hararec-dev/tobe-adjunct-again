@@ -1,0 +1,15 @@
+.env
+venv/
+env/
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+.coverage
+.*.swp
+.idea/
+.vscode/
+*.pyc
+**/__pycache__/*
+.DS_Store
+**/meta/*
+*.debug.py
