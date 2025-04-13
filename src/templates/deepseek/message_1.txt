@@ -1,0 +1,22 @@
+${name},  
+
+Es un placer dirigirme a usted. Mi nombre es [TU NOMBRE COMPLETO], estudiante de [TU CARRERA] en la Facultad de Ciencias de la UNAM, y me permito contactarle para expresar mi interés en colaborar como ayudante adjunto en su curso de ${subject}.  
+
+Cuento con 5 semestres de experiencia como ayudante en asignaturas de matemáticas avanzadas, incluyendo:  
+- 3 semestres como primer ayudante en Ecuaciones Diferenciales bajo la mentoría del Fís. Octavio Eduardo Vizcaya Xilotl (quien generosamente me otorgó una carta de recomendación que puedo compartir)  
+- Colaboración con el Dr. Hugo Arizmendi Peimbert en Variable Compleja  
+- Asistencia al Dr. Raybel Andrés García Ancona en Cálculo Diferencial e Integral  
+- Trabajo conjunto con el Dr. Enrique Álvarez del Castillo de Piña en cursos avanzados de Ecuaciones Diferenciales  
+
+Estoy particularmente interesado en ${subject}, pero también tengo sólidos conocimientos para apoyar en sus otras asignaturas:  
+${other_subjects_formateados}  
+
+Sería un honor contribuir al desarrollo académico de los estudiantes bajo su dirección, aplicando la metodología pedagógica que he perfeccionado a través de estas experiencias. Estoy disponible para una entrevista o prueba de conocimientos cuando lo considere oportuno.  
+
+Agradezco de antemano su atención y quedo atento a sus comentarios.  
+
+Atentamente,  
+[TU NOMBRE COMPLETO]  
+[TU MATRÍCULA/NÚMERO DE CUENTA]  
+[TELÉFONO DE CONTACTO]  
+[TU CORREO ELECTRÓNICO]  

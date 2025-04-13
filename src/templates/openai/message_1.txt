@@ -1,0 +1,12 @@
+Estimado(a) {{ name }},
+
+Me dirijo a usted con el fin de expresarle mi firme interés en colaborar como ayudante o adjunto en la asignatura de {{ subject }} que imparte. Cuento con una sólida experiencia de 5 semestres consecutivos como primer ayudante en Ecuaciones Diferenciales, bajo la dirección del Fís. Octavio Eduardo Vizcaya Xilotl, quien llegó incluso a otorgarme una carta de recomendación. Además, he tenido la oportunidad de colaborar en otras áreas académicas de alto nivel, trabajando con el Dr. Hugo Arizmendi Peimbert en Variable Compleja, con el Dr. Raybel Andrés García Ancona en Cálculo Diferencial e Integral, y con el Dr. Enrique Álvarez del Castillo de Pina en Ecuaciones Diferenciales.
+
+Creo firmemente que mi experiencia y capacidad para abordar los retos de la asignatura se complementan con conocimientos en otras materias, tales como: {{ other_subjects | join(", ") }}. Estoy convencido(a) de que podré aportar significativamente al desarrollo y éxito de la asignatura.
+
+Agradezco de antemano el tiempo dedicado a considerar mi solicitud y quedo a su disposición para cualquier información adicional o para una entrevista en la que pueda ampliar mis antecedentes y motivaciones.
+
+Atentamente,
+
+[Tu Nombre]  
+[Tu Información de Contacto]
