@@ -1,10 +1,10 @@
-Estimad${a/o} ${name},  
+Estimada ${name},  
 
 [SALUDO PERSONALIZADO]  
 *Ejemplos opcionales (elige uno según contexto):*  
 - "Siempre he admirado cómo [mencionar brevemente un aspecto de su trabajo/publicación/método docente si lo conoces]..."  
 - "Como entusiasta de ${subject}, su enfoque pedagógico resuena con mi visión de..."  
-- "El Dr. [Nombre de algún colega suyo con el que colaboraste] me habló de su dedicación para [aspecto específico], lo que me motivó a contactarle..."  
+- "La Dra. [Nombre de alguna colega suya con la que colaboraste] me habló de su dedicación para [aspecto específico], lo que me motivó a contactarle..."  
 
 Mi nombre es [Tu Nombre], y durante 5 semestres he tenido el privilegio de colaborar como ayudante en asignaturas avanzadas de matemáticas. Esta experiencia me enseñó algo fundamental: **un buen ayudante no solo domina los temas, sino que entiende las necesidades humanas detrás del aprendizaje**.  
 
@@ -27,4 +27,4 @@ Con gratitud por su labor docente,
 [Tu Nombre Completo]  
 [Matrícula/Teléfono/Email]  
 
-PD: Adjunto mi carta de recomendación por si considera útil revisarla. [OPCIONAL]  
+PD: Adjunto mi carta de recomendación por si considera útil revisarla. [OPCIONAL]
