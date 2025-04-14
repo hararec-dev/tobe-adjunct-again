@@ -10,6 +10,7 @@ class EmailSender:
         self.smtp_config = EMAIL_CONFIG
         self.template_loader = TemplateLoader()
         self.logger = logging.getLogger(__name__)
+        self.server = None
         
     def _connect_smtp(self):
         server = smtplib.SMTP_SSL(
@@ -22,7 +23,19 @@ class EmailSender:
         )
         return server
     
-    def send_email(self, teacher_data):
+    def connect(self):
+        """Establishes a connection to the SMTP server"""
+        if self.server is None:
+            self.server = self._connect_smtp()
+        return self.server
+    
+    def disconnect(self):
+        """Closes the SMTP server connection if open"""
+        if self.server is not None:
+            self.server.quit()
+            self.server = None
+    
+    def send_email(self, teacher_data, use_existing_connection=False):
         msg = MIMEMultipart()
         msg['From'] = self.smtp_config['user']
         msg['To'] = teacher_data['email']
@@ -41,5 +54,10 @@ class EmailSender:
         )
         msg.attach(MIMEText(body, 'plain'))
         
-        with self._connect_smtp() as server:
-            server.send_message(msg)
+        if use_existing_connection and self.server is not None:
+            # Use the existing connection
+            self.server.send_message(msg)
+        else:
+            # Create a new connection for this single email
+            with self._connect_smtp() as server:
+                server.send_message(msg)
