@@ -3,7 +3,7 @@ import logging
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from .template_loader import TemplateLoader
-from config.settings import EMAIL_CONFIG
+from src.config.settings import EMAIL_CONFIG
 
 class EmailSender:
     def __init__(self):

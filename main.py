@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from modules.email_sender import EmailSender
+from src.modules.email_sender import EmailSender
 
 def main():
     email_sender = EmailSender()
