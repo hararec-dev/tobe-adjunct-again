@@ -5,9 +5,8 @@ class TemplateLoader:
     def __init__(self, template_dir='src/templates'):
         self.template_dir = Path(template_dir)
         
-    def load_template(self, is_woman):
-        gender_suffix = 'woman' if is_woman else 'man'
-        template_path = self.template_dir / f'message_{gender_suffix}.txt'
+    def load_template(self):
+        template_path = self.template_dir / f'message.txt'
         
         with open(template_path, 'r', encoding='utf-8') as f:
             return Template(f.read())

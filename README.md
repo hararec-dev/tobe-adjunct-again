@@ -40,3 +40,9 @@ Este proyecto permite enviar emails de forma automatizada a profesores, personal
      1. Selecciona Aplicación: Otra
      2. Ingresa Nombre: Script de Email Python
      3. Copia la contraseña generada de 16 dígitos
+
+## Limpiar Caches de Python
+Para limpiar los caches de Python, ejecuta:
+```bash
+find . -name "__pycache__" -type d -exec rm -rf {} +
+```
