@@ -30,18 +30,6 @@
             "info_about_personal_work": ""
         },
         {
-            "name": "Dra. Mindy Yaneli Huerta Pérez",
-            "subject": "Álgebra Superior I",
-            "other_subjects": [
-                "Álgebra Lineal I",
-                "Álgebra Moderna I"
-            ],
-            "is_friend": false,
-            "email": "mindyhp90@ciencias.unam.mx",
-            "is_woman": true,
-            "info_about_personal_work": ""
-        },
-        {
             "name": "Dra. Edith Corina Sáenz Valadez",
             "subject": "Álgebra Superior I",
             "other_subjects": [
@@ -50,6 +38,18 @@
             ],
             "is_friend": false,
             "email": "ecsv@ciencias.unam.mx",
+            "is_woman": true,
+            "info_about_personal_work": "Enseñanza de álgebra lineal, Enseñanza de álgebra superior"
+        },
+        {
+            "name": "Dra. Mindy Yaneli Huerta Pérez",
+            "subject": "Álgebra Superior I",
+            "other_subjects": [
+                "Álgebra Lineal I",
+                "Álgebra Moderna I"
+            ],
+            "is_friend": false,
+            "email": "mindyhp90@ciencias.unam.mx",
             "is_woman": true,
             "info_about_personal_work": ""
         },
@@ -94,7 +94,7 @@
             "is_friend": false,
             "email": "jamafcc@ciencias.unam.mx",
             "is_woman": false,
-            "info_about_personal_work": ""
+            "info_about_personal_work": "Cálculo de Variaciones, Estabilidad Espectral y No Lineal de Estructuras Coherentes, Ecuaciones Diferenciales Parciales, Análisis, Estadística y Probabilidad, Programación Científica"
         },
         {
             "name": "Dr. Francisco Javier Torres Ayala",
@@ -110,7 +110,7 @@
             "is_friend": false,
             "email": "tfrancisco@ciencias.unam.mx",
             "is_woman": false,
-            "info_about_personal_work": ""
+            "info_about_personal_work": "Productos libres de álgebras de matrices, Probabilidad libre y matrices aleatorias, Programación positiva semi-definida"
         },
         {
             "name": "Dr. Álvaro Reyes García",
@@ -125,7 +125,7 @@
             "is_friend": false,
             "email": "alvaroreyes147@ciencias.unam.mx",
             "is_woman": false,
-            "info_about_personal_work": ""
+            "info_about_personal_work": "Enseñanza de Cálculo Diferencial e Integral"
         },
         {
             "name": "Dr. César Ismael Corral Rojas",
@@ -137,7 +137,7 @@
             "is_friend": false,
             "email": "cicorral@ciencias.unam.mx",
             "is_woman": false,
-            "info_about_personal_work": ""
+            "info_about_personal_work": "Teoría de conjuntos"
         },
         {
             "name": "Irving Daniel Calderón Camacho",
@@ -151,7 +151,7 @@
             "is_friend": false,
             "email": "irv.calderon@ciencias.unam.mx",
             "is_woman": false,
-            "info_about_personal_work": ""
+            "info_about_personal_work": "Flujo de Ricci simplicial"
         },
         {
             "name": "Mat. José Santos",
