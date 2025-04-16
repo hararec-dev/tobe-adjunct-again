@@ -1,7 +1,8 @@
+import time
 from src.modules.email_sender import EmailSender
 from src.config.settings import MONGO_CONFIG
 from pymongo import MongoClient
-import time
+
 def main():
     email_sender = EmailSender()
     client = MongoClient(
