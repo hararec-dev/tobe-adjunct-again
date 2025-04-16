@@ -56,14 +56,14 @@ class EmailSender:
         
         msg['Subject'] = subject_template.substitute(subject=teacher_data['subject'])
         
-        have_personal_work = bool(teacher_data['info_about_personal_work'])
-        have_many_jobs = self.has_more_than_one_subject(teacher_data['info_about_personal_work'])
+        have_personal_work = bool(teacher_data['infoAboutPersonalWork'])
+        have_many_jobs = self.has_more_than_one_subject(teacher_data['infoAboutPersonalWork'])
         
         body = template.substitute(
             name=teacher_data['name'],
             subject=teacher_data['subject'],
-            other_subjects_formateados="\n".join([f"- {s}" for s in teacher_data['other_subjects']]),
-            personal_work=self._format_personal_work(teacher_data['info_about_personal_work'], have_many_jobs) if have_personal_work else '',
+            other_subjects_formateados="\n".join([f"- {s}" for s in teacher_data['otherSubjects']]),
+            personal_work=self._format_personal_work(teacher_data['infoAboutPersonalWork'], have_many_jobs) if have_personal_work else '',
             and_letter_c=' y c' if have_personal_work else 'C',
         )
         msg.attach(MIMEText(body, 'plain'))
