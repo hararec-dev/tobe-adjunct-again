@@ -57,6 +57,7 @@ class EmailSender:
         msg['Subject'] = subject_template.substitute(subject=teacher_data['subject'])
         
         have_personal_work = bool(teacher_data['infoAboutPersonalWork'])
+        is_complex_analysis = bool(teacher_data['isComplexAnalysis'])
         have_many_jobs = self.has_more_than_one_subject(teacher_data['infoAboutPersonalWork'])
         
         body = template.substitute(
@@ -65,6 +66,7 @@ class EmailSender:
             other_subjects_formateados="\n".join([f"- {s}" for s in teacher_data['otherSubjects']]),
             personal_work=self._format_personal_work(teacher_data['infoAboutPersonalWork'], have_many_jobs) if have_personal_work else '',
             and_letter_c=' y c' if have_personal_work else 'C',
+            complex_analysis="También tuve la oportunidad de dar una charla llamada 'Sobre la Hipótesis de Riemann' en el Coloquio de Orientación Matemática, y tengo" if is_complex_analysis else 'Tengo',
         )
         msg.attach(MIMEText(body, 'plain'))
         return msg
