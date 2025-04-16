@@ -1,1 +1,1 @@
-Interés en Colaborar en ${subject} como Ayudante
+Solicitud para Colaborar como Ayudante en ${subject}

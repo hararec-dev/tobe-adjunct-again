@@ -1,6 +1,6 @@
 Hola ${name},
 
-Me llamo Hararec y le escribo con interés en colaborar como su ayudante en ${subject}. ${personal_work}${and_letter_c}uento con experiencia previa como ayudante. 
+Me llamo Hararec y le escribo porque me gustaría colaborar como su ayudante en ${subject}. ${personal_work}${and_letter_c}uento con experiencia previa como ayudante. 
 
 Fui primer ayudante durante cinco semestres en Ecuaciones Diferenciales con el Fís. Octavio Eduardo Vizcaya Xilotl. Además, he colaborado en Variable Compleja y en Cálculo Integral/Diferencial con otros profesores y soy desarrollador de Software. Tengo conocimientos sólidos en varias de las materias que usted imparte, como son:
 

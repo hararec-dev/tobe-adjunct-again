@@ -13,7 +13,7 @@ def main():
     
     db = client[MONGO_CONFIG['database']]
     collection = db[MONGO_CONFIG['collection']]
-    teachers = list(collection.find({}))
+    teachers = list(collection.find({"wasEmailSend": False}))
     
     try:
         email_sender.connect()
@@ -21,11 +21,16 @@ def main():
         for teacher in teachers:
             try:
                 email_sender.send_email(teacher, use_existing_connection=True)
+                collection.update_one(
+                    {"_id": teacher["_id"]},
+                    {"$set": {"wasEmailSend": True}}
+                )
                 print(f"Email enviado a {teacher['email']}")
             except Exception as e:
                 print(f"Error enviando a {teacher['email']}: {str(e)}")
     finally:
         email_sender.disconnect()
+        client.close()
 
 if __name__ == "__main__":
     main()
