@@ -46,3 +46,13 @@ Para limpiar los caches de Python, ejecuta:
 ```bash
 find . -name "__pycache__" -type d -exec rm -rf {} +
 ```
+## Habilitar Creación de Backups
+```bash
+# Crear backup
+chmod +x ./backup-mongodb.sh
+# Restaurar base de datos
+docker-compose up -d
+chmod +x ./restore-mongodb.sh
+# Run the restore script with the timestamp of the backup you want to restore
+./restore-mongodb.sh 20230815_120000
+```
