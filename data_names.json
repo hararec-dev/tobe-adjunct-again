@@ -1,0 +1,132 @@
+{
+    "teachers": [
+        {
+            "name": "M. en C. Elena de Oteyza de Oteyza",
+            "subjects": [
+                "Cálculo Integral y Diferencial"
+            ]
+        },
+        {
+            "name": "Mat. César Eduardo Sousa Mondragón",
+            "subjects": [
+                "Cálculo Integral y Diferencial",
+                "Ecuaciones Diferenciales I",
+                "Análisis Matemático I",
+                "Variable Compleja I",
+                "Análisis Matemático II",
+                "Economía I",
+                "Geometría Analítica I",
+                "Cálculo de las Variaciones",
+                "Funciones Especiales y Transformadas Integrales",
+                "Probabilidad I",
+                "Probabilidad II",
+                "Economía Matemática I",
+                "Análisis Matemático III",
+                "Teoría de Juegos en Economía",
+                "Teoría de Juegos I",
+                "Economía II",
+                "Economía Matemática II",
+                "Matemáticas II"
+            ]
+        },
+        {
+            "name": "Dr. Carlos Prieto López",
+            "subjects": [
+                "Cálculo Integral y Diferencial",
+                "Geometría Analítica II",
+                "Geometría Analítica I",
+                "Álgebra Superior II",
+                "Matemáticas para las Ciencias de la Tierra III",
+                "Matemáticas para las Ciencias de la Tierra I",
+                "Termodinámica",
+                "Electromagnetismo I",
+                "Electromagnetismo II",
+                "Matemáticas para las Ciencias de la Tierra IV",
+                "Laboratorio de Mecánica",
+                "Matemáticas para las Ciencias de la Tierra II",
+                "Variable Compleja I"
+            ]
+        },
+        {
+            "name": "Dr. Gerardo Sánchez Licea",
+            "subjects": [
+                "Cálculo Integral y Diferencial",
+                "Análisis Matemático I",
+                "Análisis Matemático IV",
+                "Análisis Matemático II",
+                "Teoría de la Medida I",
+                "Cálculo de las Variaciones",
+                "Análisis Matemático III"
+            ]
+        },
+        {
+            "name": "Dra. Jessica Angélica Jaurez Rosas",
+            "subjects": [
+                "Cálculo Integral y Diferencial",
+                "Ecuaciones Diferenciales III",
+                "Ecuaciones Diferenciales II",
+                "Ecuaciones Diferenciales I",
+                "Seminario de Geometría A",
+                "Álgebra Lineal I",
+                "Sistemas Dinámicos Discretos I",
+                "Álgebra Superior I",
+                "Álgebra Lineal II"
+            ]
+        },
+        {
+            "name": "Dr. Vinicio Antonio Gómez Gutiérrez",
+            "subjects": [
+                "Cálculo Integral y Diferencial",
+                "Geometría Moderna I",
+                "Geometría Riemanniana II",
+                "Análisis Matemático I",
+                "Geometría Riemanniana I",
+                "Ecuaciones Diferenciales I",
+                "Geometría Diferencial I",
+                "Variable Compleja I",
+                "Seminario Matemáticas Aplicadas II",
+                "Seminario Matemáticas Aplicadas I",
+                "Seminario de Apoyo a la Titulación en Matemáticas A",
+                "Ecuaciones Diferenciales III",
+                "Seminario de Geometría A",
+                "Seminario de Topología B",
+                "Ecuaciones Diferenciales II",
+                "Seminario de Topología A",
+                "Geometría Proyectiva",
+                "Introducción a la Geometría Avanzada",
+                "Seminario de Análisis Combinatorio",
+                "Conjuntos Convexos",
+                "Variable Compleja II",
+                "Topología Diferencial II",
+                "Topología Diferencial I",
+                "Matemáticas I",
+                "Geometría Diferencial II",
+                "Álgebra",
+                "Álgebra Superior II",
+                "Geometría Analítica I"
+            ]
+        },
+        {
+            "name": "Dra. Verónica Martínez de la Vega y Mansilla",
+            "subjects": [
+                "Cálculo Integral y Diferencial",
+                "Geometría Moderna I",
+                "Topología I",
+                "Seminario de Topología A",
+                "Teoría de los Números I",
+                "Geometría Moderna II",
+                "Geometría Analítica II",
+                "Álgebra Superior I",
+                "Topología II",
+                "Álgebra Superior II"
+            ]
+        },
+        {
+            "name": "Dr. Leonel Rito Rodríguez",
+            "subjects": [
+                "Cálculo Integral y Diferencial",
+                "Sistemas Dinámicos Discretos I"
+            ]
+        }
+    ]
+}

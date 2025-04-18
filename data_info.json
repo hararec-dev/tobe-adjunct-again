@@ -1,0 +1,36 @@
+{
+    "teachers": [
+        {
+            "name": "M. en C. Elena de Oteyza de Oteyza",
+            "infoAboutPersonalWork": ""
+        },
+        {
+            "name": "Mat. César Eduardo Sousa Mondragón",
+            "infoAboutPersonalWork": "Teoría ergódica, Probabilidad"
+        },
+        {
+            "name": "Dr. Carlos Prieto López",
+            "infoAboutPersonalWork": "Topología algebraica, homotopía, teoría de la cohomología"
+        },
+        {
+            "name": "Dr. Gerardo Sánchez Licea",
+            "infoAboutPersonalWork": "Análisis funcional, espacios de Banach y Hilbert"
+        },
+        {
+            "name": "Dra. Jessica Angélica Jaurez Rosas",
+            "infoAboutPersonalWork": "Ecuaciones diferenciales"
+        },
+        {
+            "name": "Dr. Vinicio Antonio Gómez Gutiérrez",
+            "infoAboutPersonalWork": "Geometría riemanniana, Ecuaciones diferenciales"
+        },
+        {
+            "name": "Dra. Verónica Martínez de la Vega y Mansilla",
+            "infoAboutPersonalWork": "Topología algebraica, teoría de homotopía"
+        },
+        {
+            "name": "Dr. Leonel Rito Rodríguez",
+            "infoAboutPersonalWork": ""
+        }
+    ]
+}

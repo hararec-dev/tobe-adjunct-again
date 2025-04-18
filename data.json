@@ -1,0 +1,133 @@
+{
+    "teachers": [
+        {
+            "name": "M. en C. Elena de Oteyza de Oteyza",
+            "email": "eoo@ciencias.unam.mx",
+            "subject": "Cálculo Integral y Diferencial",
+            "otherSubjects": [
+                "Cálculo Integral y Diferencial I",
+                "Cálculo Integral y Diferencial II",
+                "Cálculo Integral y Diferencial III",
+                "Cálculo Integral y Diferencial IV"
+            ],
+            "infoAboutPersonalWork": "",
+            "isComplexAnalysis": true,
+            "wasEmailSend": false
+        },
+        {
+            "name": "Mat. César Eduardo Sousa Mondragón",
+            "email": "cesarsousa2013@ciencias.unam.mx",
+            "subject": "Cálculo Integral y Diferencial",
+            "otherSubjects": [
+                "Ecuaciones Diferenciales I",
+                "Análisis Matemático I",
+                "Variable Compleja I",
+                "Análisis Matemático II",
+                "Geometría Analítica I",
+                "Cálculo de las Variaciones",
+                "Funciones Especiales y Transformadas Integrales",
+                "Probabilidad I",
+                "Probabilidad II",
+                "Análisis Matemático III"
+            ],
+            "infoAboutPersonalWork": "Teoría ergódica, Probabilidad",
+            "isComplexAnalysis": true,
+            "wasEmailSend": false
+        },
+        {
+            "name": "Dr. Carlos Prieto López",
+            "email": "cpl@ciencias.unam.mx",
+            "subject": "Cálculo Integral y Diferencial",
+            "otherSubjects": [
+                "Geometría Analítica II",
+                "Geometría Analítica I",
+                "Álgebra Superior II",
+                "Variable Compleja I"
+            ],
+            "infoAboutPersonalWork": "Topología algebraica, homotopía, teoría de la cohomología",
+            "isComplexAnalysis": true,
+            "wasEmailSend": false
+        },
+        {
+            "name": "Dr. Gerardo Sánchez Licea",
+            "email": "gesl@ciencias.unam.mx",
+            "subject": "Cálculo Integral y Diferencial",
+            "otherSubjects": [
+                "Análisis Matemático I",
+                "Análisis Matemático IV",
+                "Análisis Matemático II",
+                "Teoría de la Medida I",
+                "Cálculo de las Variaciones",
+                "Análisis Matemático III"
+            ],
+            "infoAboutPersonalWork": "Análisis funcional, espacios de Banach y Hilbert",
+            "isComplexAnalysis": true,
+            "wasEmailSend": false
+        },
+        {
+            "name": "Dra. Jessica Angélica Jaurez Rosas",
+            "email": "jessica.jaurez@ciencias.unam.mx",
+            "subject": "Cálculo Integral y Diferencial",
+            "otherSubjects": [
+                "Ecuaciones Diferenciales III",
+                "Ecuaciones Diferenciales II",
+                "Ecuaciones Diferenciales I",
+                "Álgebra Lineal I",
+                "Álgebra Superior I",
+                "Álgebra Lineal II"
+            ],
+            "infoAboutPersonalWork": "Ecuaciones diferenciales",
+            "isComplexAnalysis": true,
+            "wasEmailSend": false
+        },
+        {
+            "name": "Dr. Vinicio Antonio Gómez Gutiérrez",
+            "email": "vgomez@ciencias.unam.mx",
+            "subject": "Cálculo Integral y Diferencial",
+            "otherSubjects": [
+                "Análisis Matemático I",
+                "Geometría Riemanniana I",
+                "Ecuaciones Diferenciales I",
+                "Geometría Diferencial I",
+                "Variable Compleja I",
+                "Ecuaciones Diferenciales III",
+                "Ecuaciones Diferenciales II",
+                "Variable Compleja II",
+                "Topología Diferencial II",
+                "Topología Diferencial I",
+                "Álgebra Superior II",
+                "Geometría Analítica I"
+            ],
+            "infoAboutPersonalWork": "Geometría riemanniana, Ecuaciones diferenciales",
+            "isComplexAnalysis": true,
+            "wasEmailSend": false
+        },
+        {
+            "name": "Dra. Verónica Martínez de la Vega y Mansilla",
+            "email": "vmvm@im.unam.mx",
+            "subject": "Cálculo Integral y Diferencial",
+            "otherSubjects": [
+                "Topología I",
+                "Topología II",
+                "Teoría de los Números I",
+                "Geometría Analítica II",
+                "Álgebra Superior I",
+                "Álgebra Superior II"
+            ],
+            "infoAboutPersonalWork": "Topología algebraica, teoría de homotopía",
+            "isComplexAnalysis": true,
+            "wasEmailSend": false
+        },
+        {
+            "name": "Dr. Leonel Rito Rodríguez",
+            "email": "leonel_rito@ciencias.unam.mx",
+            "subject": "Cálculo Integral y Diferencial",
+            "otherSubjects": [
+                "Sistemas Dinámicos Discretos I"
+            ],
+            "infoAboutPersonalWork": "",
+            "isComplexAnalysis": true,
+            "wasEmailSend": false
+        }
+    ]
+}
