@@ -13,5 +13,6 @@ pip-delete-this-directory.txt
 .DS_Store
 **/meta/*
 **/data/*
+**/backups/*
 *.debug.py
 debug.py
