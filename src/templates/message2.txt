@@ -1,0 +1,13 @@
+Hola ${name},
+
+Le escribo para consultarle si existe alguna necesidad de un segundo o tercer ayudante en su curso de ${subject}.
+
+Este semestre tengo el gusto de ser ayudante del Mtro. Alberto Aldama en Cálculo IV. Mi nombramiento oficial como ayudante tipo B me permite colaborar en una materia adicional de 1 hora semanal.
+
+Cuento con la experiencia de haber sido primer ayudante por cinco semestres en Ecuaciones Diferenciales y soy desarrollador de software. ${personal_work} Quisiera poder aportar al aprendizaje de los alumnos y colaborar activamente con usted.
+
+Agradezco de antemano su tiempo y su valiosa consideración. Quedo a sus órdenes para cualquier duda o para enviarle mi CV y carta de recomendación.
+
+Atentamente,
+Hararec Medina González
+whatsapp: 5542084239
