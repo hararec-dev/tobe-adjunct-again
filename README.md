@@ -1,12 +1,12 @@
 # Envío Automático de Emails a Profesores
 
-Este proyecto es una aplicación de consola en Python diseñada para enviar correos electrónicos personalizados a profesores de forma automatizada. Utiliza plantillas para el asunto y el cuerpo del mensaje, y obtiene los datos de los destinatarios desde una base de datos MongoDB.
+Este proyecto es una aplicación de consola en Python diseñada para enviar correos electrónicos personalizados a profesores de forma automatizada. Utiliza plantillas para el asunto y el cuerpo del mensaje, y obtiene los datos de los destinatarios desde una base de datos TimescaleDB.
 
 ## Características
 
 - **Envío de correos electrónicos**: Se conecta a un servidor SMTP para enviar los correos.
 - **Personalización**: Utiliza plantillas para el asunto y el cuerpo del correo, permitiendo un alto grado de personalización.
-- **Base de datos**: Se integra con MongoDB para gestionar la lista de profesores y el estado de los envíos.
+- **Base de datos**: Se integra con TimescaleDB (PostgreSQL) para gestionar la lista de profesores y el estado de los envíos.
 - **Manejo de estado**: Realiza un seguimiento de los correos enviados para evitar duplicados.
 
 ## Configuración del Entorno
@@ -32,15 +32,12 @@ Este proyecto es una aplicación de consola en Python diseñada para enviar corr
     Crea un archivo `.env` en la raíz del proyecto, basándote en el archivo `.env.example`. Deberás completar los siguientes valores:
 
     ```ini
-    # Configuración de la base de datos MongoDB
-    # la cadena de conexión es la siguiente:
-    # mongodb://admin:mTQOL70fs3rJ@localhost:8001/teachers?authSource=admin
-    MONGO_USERNAME=admin
-    MONGO_PASSWORD=mTQOL70fs3rJ
-    MONGO_PORT=8001
-    MONGO_HOST=localhost
-    MONGO_DATABASE=teachers
-    MONGO_COLLECTION=development
+    # Configuración de la base de datos TimescaleDB/PostgreSQL
+    POSTGRES_HOST=localhost
+    POSTGRES_PORT=5432
+    POSTGRES_USER=user
+    POSTGRES_PASSWORD=password
+    POSTGRES_DB=teachers
 
     # Configuración del servidor de correo (SMTP)
     EMAIL_SERVER=smtp.gmail.com
@@ -66,56 +63,51 @@ Este proyecto es una aplicación de consola en Python diseñada para enviar corr
 ## Uso
 
 1.  **Poblar la base de datos**:
-    Asegúrate de que tu instancia de MongoDB esté en funcionamiento. Puedes usar Docker para levantar una base de datos rápidamente:
+    Asegúrate de que tu instancia de TimescaleDB esté en funcionamiento. Puedes usar Docker para levantar una base de datos rápidamente:
     ```bash
     docker-compose up -d
     ```
 
-    Luego, puedes usar el script `scripts/data.js` para insertar un dato de ejemplo en la colección `teachers`. Este script te servirá como guía para entender la estructura de datos necesaria.
-    ```bash
-    mongo email_sender scripts/data.js
-    ```
+    Luego, puedes usar un cliente de PostgreSQL para conectarte a la base de datos y ejecutar el DDL que se encuentra en la sección de "Estructura de Datos" para crear la tabla `teachers`.
 
 2.  **Ejecutar la aplicación**:
     Una vez que la base de datos esté poblada y el archivo `.env` configurado, puedes ejecutar la aplicación:
     ```bash
     python main.py
     ```
-    La aplicación buscará todos los profesores en la colección que no hayan recibido un correo (`wasEmailSend: false`), se los enviará y actualizará su estado.
+    La aplicación buscará todos los profesores en la tabla que no hayan recibido un correo (`wasEmailSend: false`), se los enviará y actualizará su estado.
 
 ## Estructura de Datos
 
-El documento de cada profesor en la colección de MongoDB debe tener la siguiente estructura:
+El schema SQL (DDL) para la nueva tabla `teachers` en TimescaleDB es el siguiente:
 
-```javascript
-{
-    name: "Nombre del Profesor",
-    email: "correo@ejemplo.com",
-    subject: "Asunto Principal del Correo",
-    otherSubjects: [
-        "Otra Materia 1",
-        "Otra Materia 2"
-    ],
-    infoAboutPersonalWork: "Información sobre su especialización",
-    isComplexAnalysis: true, // o false
-    wasEmailSend: false
-}
+```sql
+CREATE TABLE teachers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    subject VARCHAR(255),
+    otherSubjects TEXT[],
+    infoAboutPersonalWork TEXT,
+    isComplexAnalysis BOOLEAN,
+    wasEmailSend BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+-- Convertir la tabla en una hypertable (característica de TimescaleDB)
+SELECT create_hypertable('teachers', 'created_at');
 ```
 
 ## Scripts Adicionales
 
 -   **Backup de la base de datos**:
-    Para crear un backup de tu base de datos, asegúrate de que el script sea ejecutable y luego córrelo:
+    Para crear un backup de tu base de datos, puedes usar `pg_dump`:
     ```bash
-    chmod +x ./backup-mongodb.sh
-    ./backup-mongodb.sh
+    docker-compose exec -T timescaledb pg_dump -U user -d teachers > backup.sql
     ```
 
 -   **Restaurar la base de datos**:
-    Para restaurar una base de datos desde un backup, primero asegúrate de que el contenedor de Docker esté corriendo. Luego, ejecuta el script de restauración con el timestamp del backup que deseas usar.
+    Para restaurar una base de datos desde un backup, primero asegúrate de que el contenedor de Docker esté corriendo. Luego, puedes usar `psql`:
     ```bash
-    docker-compose up -d
-    chmod +x ./restore-mongodb.sh
-    ./restore-mongodb.sh <timestamp_del_backup>
+    cat backup.sql | docker-compose exec -T timescaledb psql -U user -d teachers
     ```
-    Por ejemplo: `./restore-mongodb.sh 20230815_120000`
