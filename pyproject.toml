@@ -1,0 +1,15 @@
+[tool.black]
+line-length = 170
+target-version = ['py313']
+
+[tool.isort]
+profile = "black"
+line_length = 170
+known_first_party = ["src"]
+
+[tool.bandit]
+exclude_dirs = ["tests", "*/migrations/*"]
+
+[tool.flake8]
+max-line-length = 170
+ignore = ["E203", "W503"]
