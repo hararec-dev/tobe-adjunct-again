@@ -5,8 +5,7 @@ from email.mime.text import MIMEText
 from typing import Dict, Optional
 
 from src.config.settings import EMAIL_CONFIG
-
-from .template_loader import TemplateLoader
+from src.core.common.template_loader import TemplateLoader
 
 
 class EmailSender:
