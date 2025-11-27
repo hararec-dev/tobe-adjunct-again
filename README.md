@@ -119,3 +119,18 @@ El documento de cada profesor en la colección de MongoDB debe tener la siguient
     ./restore-mongodb.sh <timestamp_del_backup>
     ```
     Por ejemplo: `./restore-mongodb.sh 20230815_120000`
+
+-   **Scraping de profesores**:
+    ```bash
+    # Solo scraping
+    python main.py --scrape-only
+
+    # Scraping y luego envío de emails
+    python main.py --scrape
+
+    # Solo envío de emails (comportamiento original)
+    python main.py
+
+    # O usar el script dedicado
+    python scrape_fciencias.py
+    ```
