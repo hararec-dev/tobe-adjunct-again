@@ -8,7 +8,7 @@ from src.config.settings import MONGO_CONFIG
 logger = logging.getLogger(__name__)
 
 
-class DatabaseManager:
+class ProfessorRepository:
     def __init__(self):
         self.client = None
         self.db = None
@@ -76,6 +76,14 @@ class DatabaseManager:
                 logger.error(f"Error guardando {professor['name']}: {str(e)}")
 
         return {"saved": saved_count, "updated": updated_count}
+
+    def get_professors_to_email(self):
+        """Obtiene todos los profesores que no han recibido un email"""
+        return list(self.collection.find({"wasEmailSend": False}))
+
+    def update_professor_email_status(self, professor_id):
+        """Actualiza el estado de envío de email de un profesor"""
+        self.collection.update_one({"_id": professor_id}, {"$set": {"wasEmailSend": True}})
 
     def close(self):
         """Cierra la conexión a MongoDB"""

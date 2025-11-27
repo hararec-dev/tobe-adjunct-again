@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -21,7 +22,7 @@ class FcienciasScraper:
         self.base_url = config("FCIENCIAS_BASE_URL")
         self.username = config("FCIENCIAS_USERNAME")
         self.password = config("FCIENCIAS_PASSWORD")
-        self.wait_timeout = config("WAIT_TIMEOUT", default=15, cast=int)
+        self.wait_timeout = config("WAIT_TIMEOUT", default=30, cast=int)
         self.headless = headless
         self.driver = None
         self.wait = None
@@ -52,10 +53,7 @@ class FcienciasScraper:
 
             username_field.send_keys(self.username)
             password_field.send_keys(self.password)
-
-            # Enviar formulario
-            login_button = self.driver.find_element(By.XPATH, "//button[contains(text(), 'Acceder')]")
-            login_button.click()
+            password_field.send_keys(Keys.RETURN)
 
             # Esperar a que se complete el login (verificando que estamos en una página diferente)
             self.wait.until(EC.url_changes(f"{self.base_url}/acceder"))
@@ -77,7 +75,7 @@ class FcienciasScraper:
             self.driver.get(url)
 
             # Esperar a que cargue la tabla de asignaturas
-            self.wait.until(EC.presence_of_element_located((By.XPATH, "//a[contains(@href, '/docencia/horarios/20261/217/')]")))
+            self.wait.until(EC.presence_of_element_located((By.TAG_NAME, "table")))
 
             soup = BeautifulSoup(self.driver.page_source, "html.parser")
             subject_links = []
@@ -95,7 +93,6 @@ class FcienciasScraper:
 
             logger.info(f"Encontradas {len(subject_links)} asignaturas")
             return subject_links
-
         except Exception as e:
             logger.error(f"Error obteniendo asignaturas: {str(e)}")
             return []
