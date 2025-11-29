@@ -409,7 +409,56 @@ class FcienciasScraper:
             return None
 
     def _extract_all_subjects(self, soup):
-        """Extrae todas las materias que imparte el profesor"""
+        """Extrae todas las materias que imparte el profesor desde el historial completo"""
+        subjects = []
+
+        try:
+            # Buscar el enlace "Ver todos los grupos"
+            all_groups_link = soup.find("a", string=re.compile(r"Ver todos los grupos"))
+
+            if all_groups_link and all_groups_link.get("href"):
+                # Construir URL completa del historial
+                groups_url = all_groups_link["href"]
+                if not groups_url.startswith("http"):
+                    groups_url = f"{self.base_url}{groups_url}"
+
+                logger.info(f"Navegando al historial completo: {groups_url}")
+
+                # Navegar a la página del historial
+                self.driver.get(groups_url)
+
+                # Esperar a que cargue la página del historial
+                self.wait.until(EC.presence_of_element_located((By.ID, "info-contenido")))
+
+                # Parsear el HTML del historial
+                historical_soup = BeautifulSoup(self.driver.page_source, "html.parser")
+
+                # Extraer todas las asignaturas del historial
+                subject_links = historical_soup.find_all("a", href=re.compile(r"/docencia/horarios/detalles/\d+"))
+
+                for link in subject_links:
+                    link_text = link.get_text().strip()
+                    # Limpiar el texto: remover ", Profesor", ", Ayudante" y cualquier rol similar
+                    subject_name = re.sub(r",\s*(Profesor|Ayudante).*$", "", link_text).strip()
+
+                    if subject_name and subject_name not in subjects:
+                        subjects.append(subject_name)
+
+                logger.info(f"Extraídas {len(subjects)} asignaturas únicas del historial completo")
+
+            else:
+                logger.warning("No se encontró el enlace 'Ver todos los grupos'. Usando método de extracción tradicional.")
+                subjects = self._extract_subjects_fallback(soup)
+
+        except Exception as e:
+            logger.error(f"Error extrayendo materias del historial: {str(e)}")
+            logger.info("Usando método de extracción tradicional como fallback")
+            subjects = self._extract_subjects_fallback(soup)
+
+        return subjects
+
+    def _extract_subjects_fallback(self, soup):
+        """Método de respaldo para extraer materias de la sección de Enseñanza (comportamiento original)"""
         subjects = []
 
         enseñanza_headers = soup.find_all(["h2", "h3"], string=re.compile("Enseñanza"))
