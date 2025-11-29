@@ -16,4 +16,4 @@ pip-delete-this-directory.txt
 **/backups/*
 *.debug.py
 debug.py
-backup/
+**/backup/*

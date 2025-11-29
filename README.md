@@ -1,136 +1,223 @@
-# Envío Automático de Emails a Profesores
+# **Sistema Automatizado - Recopilación de Datos y Envío de Emails**
 
-Este proyecto es una aplicación de consola en Python diseñada para enviar correos electrónicos personalizados a profesores de forma automatizada. Utiliza plantillas para el asunto y el cuerpo del mensaje, y obtiene los datos de los destinatarios desde una base de datos MongoDB.
+![Logo UNAM](https://web.fciencias.unam.mx/assets/meta/66c61fb/layout/encabezado-unam.gif)
 
-## Características
+Este proyecto es una aplicación de consola en Python diseñada para alumnos de la facultad de ciencias UNAM, y automatiza el envío de correos electrónicos personalizados a profesores. Utiliza **web scraping** para recopilar datos de profesores y almacena la información en una base de datos **MongoDB**. Luego, envía emails masivos utilizando plantillas personalizables.
 
-- **Envío de correos electrónicos**: Se conecta a un servidor SMTP para enviar los correos.
-- **Personalización**: Utiliza plantillas para el asunto y el cuerpo del correo, permitiendo un alto grado de personalización.
-- **Base de datos**: Se integra con MongoDB para gestionar la lista de profesores y el estado de los envíos.
-- **Manejo de estado**: Realiza un seguimiento de los correos enviados para evitar duplicados.
+-----
 
-## Configuración del Entorno
+## Prerrequisitos
 
-1.  **Clonar el repositorio**:
-    ```bash
-    git clone https://github.com/hararec-dev/tobe-adjunct-again.git
-    cd tobe-adjunct-again
-    ```
+  * Python 3.8+
+  * Docker
+  * ChromeDriver (para web scraping)
+  * Cuenta Oficial de la UNAM
 
-2.  **Crear un entorno virtual con pipenv (recomendado)**:
-    ```bash
-    pip install pipenv
-    pipenv shell
-    ```
+-----
 
-3.  **Instalar las dependencias**:
-    ```bash
-    pipenv install
-    ```
+## Instalación
 
-4.  **Configurar las variables de entorno**:
-    Crea un archivo `.env` en la raíz del proyecto, basándote en el archivo `.env.example`. Deberás completar los siguientes valores:
+### 1. Clonar el repositorio
 
-    ```ini
-    # Configuración de la base de datos MongoDB
-    # la cadena de conexión es la siguiente:
-    # mongodb://admin:mTQOL70fs3rJ@localhost:8001/teachers?authSource=admin
-    MONGO_USERNAME=admin
-    MONGO_PASSWORD=mTQOL70fs3rJ
-    MONGO_PORT=8001
-    MONGO_HOST=localhost
-    MONGO_DATABASE=teachers
-    MONGO_COLLECTION=development
+```bash
+git clone https://github.com/hararec-dev/tobe-adjunct-again.git
+cd tobe-adjunct-again
+```
 
-    # Configuración del servidor de correo (SMTP)
-    EMAIL_SERVER=smtp.gmail.com
-    EMAIL_PORT=587
-    EMAIL_USER=tu_correo@gmail.com
-    EMAIL_PASSWORD=tu_contraseña_de_aplicacion
-    ```
+### 2. Configurar entorno virtual
 
-    **Nota sobre la contraseña de Gmail**: Para habilitar el envío de correos desde una cuenta de Gmail, es necesario generar una "Contraseña de Aplicación". Sigue estos pasos:
-1. **Habilitar Verificación en Dos Pasos**
-   - Ve a [tu Cuenta de Google](https://myaccount.google.com/)
-   - Navega a: Seguridad → Verificación en Dos Pasos
-   - Haz clic en "ACTIVAR"
+```bash
+# Instalar pipenv si no está disponible
+pip install pipenv
+# Crear y activar entorno virtual
+pipenv shell
+# Instalar dependencias
+pipenv install
+```
 
-2. **Crear una "Contraseña de Aplicación"**
-   - Permanece en la sección de Seguridad
-   - Busca "Contraseñas de Aplicaciones"
-   - Sigue estos pasos:
-     1. Selecciona Aplicación: Otra
-     2. Ingresa Nombre: Script de Email Python
-     3. Copia la contraseña generada de 16 dígitos
+### 3. Configurar variables de entorno
+
+Crea un archivo `.env` basado en `.env.example`:
+
+```ini
+# Configuración de MongoDB
+MONGO_USERNAME=admin
+MONGO_PASSWORD=tu_contraseña_mongo
+MONGO_PORT=8001
+MONGO_HOST=localhost
+MONGO_DATABASE=teachers
+MONGO_COLLECTION=development
+
+# Configuración de Email (Gmail)
+EMAIL_USER=tu_correo@gmail.com
+EMAIL_PASSWORD=tu_contraseña_de_aplicación
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=465
+
+# Configuración de Scraping - FCIENCIAS
+FCIENCIAS_USERNAME=tu_numero_de_cuenta
+FCIENCIAS_PASSWORD=tu_contraseña_fciencias
+FCIENCIAS_BASE_URL=https://web.fciencias.unam.mx
+WAIT_TIMEOUT=30
+OPEN_BROWSER=False
+REQUEST_DELAY=2
+```
+
+### 4. Configurar credenciales de Gmail
+
+**Para habilitar el envío desde Gmail:**
+
+1.  **Habilitar Verificación en Dos Pasos**
+
+      * Ve a [tu Cuenta de Google](https://myaccount.google.com/)
+      * Navega a: Seguridad → Verificación en Dos Pasos
+      * Activa la verificación
+
+2.  **Generar Contraseña de Aplicación**
+
+      * En la misma sección de Seguridad, busca "**Contraseñas de Aplicaciones**"
+      * Selecciona "Aplicación": **Otra**
+      * Ingresa nombre: `Script de Email Python`
+      * Copia la contraseña generada de 16 dígitos y úsala en `EMAIL_PASSWORD`
+
+-----
 
 ## Uso
 
-1.  **Poblar la base de datos**:
-    Asegúrate de que tu instancia de MongoDB esté en funcionamiento. Puedes usar Docker para levantar una base de datos rápidamente:
-    ```bash
-    docker-compose up -d
-    ```
+### Iniciar base de datos con Docker
 
-    Luego, puedes usar el script `scripts/data.js` para insertar un dato de ejemplo en la colección `teachers`. Este script te servirá como guía para entender la estructura de datos necesaria.
-    ```bash
-    mongo email_sender scripts/data.js
-    ```
+```bash
+docker-compose up -d
+```
 
-2.  **Ejecutar la aplicación**:
-    Una vez que la base de datos esté poblada y el archivo `.env` configurado, puedes ejecutar la aplicación:
-    ```bash
-    python main.py
-    ```
-    La aplicación buscará todos los profesores en la colección que no hayan recibido un correo (`wasEmailSend: false`), se los enviará y actualizará su estado.
+### Ejecutar Scraping de Profesores
+
+```bash
+# Scraping completo (todas las asignaturas)
+python scrape_fciencias.py
+# Scraping con opciones avanzadas
+python scrape_fciencias.py --test 5 --delay 3 --no-headless
+```
+
+### Envío de Emails
+
+```bash
+# Solo envío de emails
+python main.py
+# Scraping y luego envío de emails
+python main.py --scrape
+# Solo scraping
+python main.py --scrape-only
+# Modo prueba con navegador visible
+python main.py --scrape-only --test --no-headless
+```
+
+-----
 
 ## Estructura de Datos
 
-El documento de cada profesor en la colección de MongoDB debe tener la siguiente estructura:
+Cada profesor en la base de datos tiene la siguiente estructura:
 
-```javascript
+```json
 {
-    name: "Nombre del Profesor",
-    email: "correo@ejemplo.com",
-    subject: "Asunto Principal del Correo",
-    otherSubjects: [
-        "Otra Materia 1",
-        "Otra Materia 2"
+    "name": "Dr. Juan José Alba González",
+    "email": "math@ciencias.unam.mx",
+    "subject": "Teoría de los Números I",
+    "otherSubjects": [
+        "Álgebra Superior I",
+        "Álgebra Superior II",
+        "Seminario de Análisis Combinatorio"
     ],
-    infoAboutPersonalWork: "Información sobre su especialización",
-    isComplexAnalysis: true, // o false
-    wasEmailSend: false
+    "infoAboutPersonalWork": "",
+    "isComplexAnalysis": false,
+    "wasEmailSend": false,
+    "sourceUrl": "https://web.fciencias.unam.mx/directorio/32808",
+    "scrapedAt": 1637891234.567890
 }
 ```
 
+-----
+
 ## Scripts Adicionales
 
--   **Backup de la base de datos**:
-    Para crear un backup de tu base de datos, asegúrate de que el script sea ejecutable y luego córrelo:
-    ```bash
-    chmod +x ./backup-mongodb.sh
-    ./backup-mongodb.sh
-    ```
+### Backup de Base de Datos
 
--   **Restaurar la base de datos**:
-    Para restaurar una base de datos desde un backup, primero asegúrate de que el contenedor de Docker esté corriendo. Luego, ejecuta el script de restauración con el timestamp del backup que deseas usar.
-    ```bash
-    docker-compose up -d
-    chmod +x ./restore-mongodb.sh
-    ./restore-mongodb.sh <timestamp_del_backup>
-    ```
-    Por ejemplo: `./restore-mongodb.sh 20230815_120000`
+```bash
+chmod +x ./backup-mongodb.sh
+./backup-mongodb.sh
+```
 
--   **Scraping de profesores**:
-    ```bash
-    # Solo scraping
-    python main.py --scrape-only
+### Restaurar Base de Datos
 
-    # Scraping y luego envío de emails
-    python main.py --scrape
+```bash
+docker-compose up -d
+chmod +x ./restore-mongodb.sh
+./restore-mongodb.sh <timestamp_del_backup>
+# Ejemplo: ./restore-mongodb.sh 20231127_120000
+```
 
-    # Solo envío de emails (comportamiento original)
-    python main.py
+-----
 
-    # O usar el script dedicado
-    python scrape_fciencias.py
-    ```
+## Configuración de Scraping
+
+### Opciones disponibles:
+
+  * `--test N`: Procesar solo N asignaturas (modo prueba)
+  * `--no-headless`: Ejecutar con navegador visible
+  * `--delay SECONDS`: Delay entre requests (default: 2)
+  * `--scrape-only`: Solo scraping, sin enviar emails
+
+### Características del Scraper:
+
+  * Login automático al portal FCIENCIAS
+  * Detección y manejo de sesiones expiradas
+  * Extracción robusta de nombres, emails y materias
+  * Limpieza automática de datos (remueve "Ayudante", "Profesor")
+  * Manejo de errores y reintentos automáticos
+  * Delays configurables para respetar el servidor
+
+-----
+
+## Solución de Problemas
+
+### Problemas comunes de ChromeDriver:
+
+```bash
+# Verificar instalación
+which chromedriver
+chromedriver --version
+# Instalar en macOS
+brew install chromedriver
+# Instalar en Linux (Ubuntu/Debian)
+sudo apt install chromium-chromedriver
+```
+
+### Error de login en scraping:
+
+  * Verifica credenciales en `.env`
+  * Ejecuta con `OPEN_BROWSER=True` para debugging
+  * Verifica que el portal esté accesible manualmente
+
+### Error de envío de emails:
+
+  * Verifica configuración de Gmail
+  * Confirma que la verificación en 2 pasos esté activada
+  * Usa **contraseña de aplicación**, no la contraseña personal
+
+-----
+
+## Contribución
+
+Las contribuciones son bienvenidas. Por favor:
+
+1.  Fork el proyecto
+2.  Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3.  Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4.  Push a la rama (`git push origin feature/AmazingFeature`)
+5.  Abre un Pull Request
+
+-----
+
+## Licencia
+
+Este proyecto está bajo la **Licencia MIT**. Ver el archivo [LICENSE](./LICENSE) para más detalles.
