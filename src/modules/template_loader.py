@@ -7,7 +7,7 @@ class TemplateLoader:
         self.template_dir = Path(template_dir)
 
     def load_template(self):
-        template_path = self.template_dir / f"message.txt"
+        template_path = self.template_dir / "message.txt"
 
         with open(template_path, "r", encoding="utf-8") as f:
             return Template(f.read())
