@@ -25,9 +25,9 @@ def main():
         # Inicializar scraper
         scraper = FcienciasScraper(headless=not config("OPEN_BROWSER", default=False, cast=bool))
 
-        # Obtener datos de profesores - MODO PRUEBA con 2 asignaturas
+        # Obtener datos de profesores - SIN LIMITACIÓN para producción
         logger.info("Obteniendo datos de profesores...")
-        professors = scraper.scrape_all_professors(max_subjects=2)
+        professors = scraper.scrape_all_professors(max_subjects=None)  # ← Cambiar a None
 
         if not professors:
             logger.error("No se obtuvieron datos de profesores")

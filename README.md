@@ -4,7 +4,7 @@
   <img src="./assets/logo-fc-unam.png" alt="Logo UNAM">
 </div>
 
-Este proyecto es una aplicación de consola en Python diseñada para alumnos de la facultad de ciencias UNAM, y automatiza el envío de correos electrónicos personalizados a profesores. Utiliza **web scraping** para recopilar datos de profesores y almacena la información en una base de datos **MongoDB**. Luego, envía emails masivos utilizando plantillas personalizables.
+Este proyecto es una aplicación de consola en Python diseñada para alumnos/profesores de la facultad de ciencias UNAM, y automatiza el envío de correos electrónicos personalizados a profesores. Utiliza **web scraping** para recopilar datos de profesores y almacena la información en una base de datos **MongoDB** local (Docker). Luego, envía emails masivos utilizando plantillas personalizables.
 
 -----
 
