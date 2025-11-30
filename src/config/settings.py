@@ -15,3 +15,5 @@ MONGO_CONFIG = {
     "database": config("MONGO_DATABASE"),
     "collection": config("MONGO_COLLECTION"),
 }
+
+PHONE_NUMBER = config("PHONE_NUMBER")

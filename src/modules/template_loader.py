@@ -14,4 +14,12 @@ class TemplateLoader:
 
     def load_subject_template(self):
         with open(self.template_dir / "subject.txt", "r", encoding="utf-8") as f:
-            return Template(f.read())
+            # Para el asunto fijo, creamos un Template pero no necesitamos sustitución
+            class FixedTemplate:
+                def __init__(self, template_string):
+                    self.template = template_string.strip()
+
+                def substitute(self, **kwargs):
+                    return self.template
+
+            return FixedTemplate(f.read())
