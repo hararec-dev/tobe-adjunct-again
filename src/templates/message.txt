@@ -1,15 +1,13 @@
 Hola ${name},
 
-Me llamo Hararec y le escribo porque me gustaría colaborar como su ayudante en ${subject}. ${personal_work}${and_letter_c}uento con experiencia previa como ayudante. 
+Me llamo Hararec. Actualmente estoy en proceso de titulación y este semestre soy adjunto del Dr. Alberto Aldama en Cálculo IV. También he colaborado como adjunto con otros profesores, quienes pueden dar excelentes referencias sobre mi responsabilidad y compromiso.
 
-Fui primer ayudante durante cinco semestres en Ecuaciones Diferenciales con el Fís. Octavio Eduardo Vizcaya Xilotl. Además, he colaborado en Variable Compleja y en Cálculo Integral/Diferencial con otros profesores y soy desarrollador de Software. ${complex_analysis} conocimientos sólidos en varias de las materias que usted imparte, como son:
+Le escribo porque me gustaría apoyar como ayudante en alguno de sus cursos. Conozco bien los temas que imparte, como ${subjects}, etc. Me interesa fortalecer mi formación docente trabajando con distintos enfoques, y cuento con el tiempo necesario para ofrecer un apoyo constante y puntual.
 
-${other_subjects_formateados}.
+Además, tengo experiencia comprobable como desarrollador de software, lo que me permite automatizar tareas y preparar material de forma eficiente.
 
-Me gustaría tener la oportunidad de conversar con usted para mostrarle cómo mis conocimientos y experiencia pueden beneficiar a sus alumnos en ${subject}. Cuento con una carta de recomendación del Fís. Octavio Eduardo Vizcaya Xilotl, la cual puedo proporcionarle si lo considera necesario.
-
-Agradezco de antemano su tiempo y consideración.
+Me gustaría tener la oportunidad de conversar con usted para mostrarle cómo mis conocimientos y experiencia pueden beneficiar sus cursos. Agradezco de antemano su tiempo y consideración.
 
 Atentamente,
 Hararec Medina González
-whatsapp: 5542084239
+whatsapp: ${phone_number}

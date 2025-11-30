@@ -1,32 +1,54 @@
 #!/bin/bash
 
-# Check if backup directory is provided
+ENV_FILE=".env"
+if [ -f "$ENV_FILE" ]; then
+    echo "Cargando variables desde $ENV_FILE"
+    source "$ENV_FILE"
+fi
+
+if [ -z "$MONGO_USERNAME" ] || [ -z "$MONGO_PASSWORD" ]; then
+  echo "Error: Las variables MONGO_USERNAME y MONGO_PASSWORD deben estar definidas."
+  exit 1
+fi
+
+DB_NAME="teachers"
+COLLECTION_NAME="development"
+JSON_FILE="$COLLECTION_NAME.json"
 if [ -z "$1" ]; then
-  echo "Please provide the backup directory timestamp"
-  echo "Usage: ./restore-mongodb.sh 20230815_120000"
-  
-  echo "Available backups:"
+  echo "Por favor, proporciona el timestamp del directorio de backup."
+  echo "Uso: ./restore-mongodb.sh 20230815_120000"
+  echo "Backups disponibles:"
   ls -la ./backups
   exit 1
 fi
 
 BACKUP_DIR="./backups/$1"
-
-# Check if backup directory exists
 if [ ! -d "$BACKUP_DIR" ]; then
-  echo "Backup directory $BACKUP_DIR does not exist"
-  echo "Available backups:"
+  echo "El directorio de backup $BACKUP_DIR no existe."
+  echo "Backups disponibles:"
   ls -la ./backups
   exit 1
 fi
 
-# Copy backup to container
-echo "Copying backup to container..."
-docker exec -it mongodb rm -rf /tmp/backup || true
-docker cp $BACKUP_DIR mongodb:/tmp/backup
+if [ ! -f "$BACKUP_DIR/$JSON_FILE" ]; then
+  echo "El archivo de datos $JSON_FILE no se encontró en $BACKUP_DIR."
+  exit 1
+fi
 
-# Restore backup
-echo "Restoring backup..."
-docker exec -it mongodb mongorestore --username=$MONGO_USERNAME --password=$MONGO_PASSWORD --authenticationDatabase=admin /tmp/backup
+echo "Copiando backup JSON ($JSON_FILE) al contenedor..."
+docker cp $BACKUP_DIR/$JSON_FILE mongodb:/tmp/$JSON_FILE
+echo "Restaurando $DB_NAME.$COLLECTION_NAME desde /tmp/$JSON_FILE..."
+docker exec -it mongodb \
+  mongoimport \
+  --db $DB_NAME \
+  --collection $COLLECTION_NAME \
+  --username $MONGO_USERNAME \
+  --password $MONGO_PASSWORD \
+  --authenticationDatabase admin \
+  --file /tmp/$JSON_FILE \
+  --jsonArray \
+  --drop
 
-echo "Backup restored successfully!"
+echo "Limpiando archivo temporal en el contenedor..."
+docker exec mongodb rm /tmp/$JSON_FILE || true
+echo "Backup restaurado exitosamente en $DB_NAME.$COLLECTION_NAME!"
