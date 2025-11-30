@@ -1,6 +1,8 @@
-# **Sistema Automatizado - Recopilación de Datos y Envío de Emails**
+# **Sistema Automatizado - Web Scraping y Envío de Emails**
 
-![Logo UNAM](https://web.fciencias.unam.mx/assets/meta/66c61fb/layout/encabezado-unam.gif)
+<div align="center">
+  <img src="./assets/logo-fc-unam.png" alt="Logo UNAM">
+</div>
 
 Este proyecto es una aplicación de consola en Python diseñada para alumnos de la facultad de ciencias UNAM, y automatiza el envío de correos electrónicos personalizados a profesores. Utiliza **web scraping** para recopilar datos de profesores y almacena la información en una base de datos **MongoDB**. Luego, envía emails masivos utilizando plantillas personalizables.
 
@@ -11,7 +13,7 @@ Este proyecto es una aplicación de consola en Python diseñada para alumnos de 
   * Python 3.8+
   * Docker
   * ChromeDriver (para web scraping)
-  * Cuenta Oficial de la UNAM
+  * Cuenta Oficial de la Facultad de Ciencias UNAM
 
 -----
 
@@ -120,13 +122,16 @@ Cada profesor en la base de datos tiene la siguiente estructura:
 
 ```json
 {
-    "name": "Dr. Juan José Alba González",
-    "email": "math@ciencias.unam.mx",
-    "subject": "Teoría de los Números I",
+    "name": "Mat. Hararec Medina González",
+    "email": "hararec@ciencias.unam.mx",
+    "subject": "Álgebra Superior",
     "otherSubjects": [
-        "Álgebra Superior I",
-        "Álgebra Superior II",
-        "Seminario de Análisis Combinatorio"
+        "Álgebra Moderna",
+        "Álgebra Lineal",
+        "Cálculo Diferencial e Integral",
+        "Geometría Analítica",
+        "Topología",
+        "Variable Compleja"
     ],
     "infoAboutPersonalWork": "",
     "isComplexAnalysis": false,
