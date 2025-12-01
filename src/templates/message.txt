@@ -1,6 +1,6 @@
 Hola ${name},
 
-Me llamo Hararec. Actualmente estoy en proceso de titulación y este semestre soy adjunto del Dr. Alberto Aldama en Cálculo IV. También he colaborado como adjunto con otros profesores, quienes pueden dar excelentes referencias sobre mi responsabilidad y compromiso.
+Me llamo Hararec. Actualmente estoy en proceso de titulación en Matemáticas y este semestre soy adjunto del Dr. Alberto Aldama en Cálculo IV. También he colaborado como adjunto con otros profesores, quienes pueden dar excelentes referencias sobre mi responsabilidad y compromiso.
 
 Le escribo porque me gustaría apoyar como ayudante en alguno de sus cursos. Conozco bien los temas que imparte, como ${subjects}, etc. Me interesa fortalecer mi formación docente trabajando con distintos enfoques, y cuento con el tiempo necesario para ofrecer un apoyo constante y puntual.
 

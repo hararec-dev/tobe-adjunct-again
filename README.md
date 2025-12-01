@@ -10,10 +10,10 @@ Este proyecto es una aplicación de consola en Python diseñada para alumnos/pro
 
 ## Prerrequisitos
 
-  * Python 3.8+
-  * Docker
-  * ChromeDriver (para web scraping)
-  * Cuenta Oficial de la Facultad de Ciencias UNAM
+  * [Python 3.8+](https://www.python.org/downloads/)
+  * [Docker](https://www.docker.com/products/docker-desktop/)
+  * [ChromeDriver](https://chromedriver.chromium.org/downloads)
+  * [Cuenta Oficial de la Facultad de Ciencias UNAM](https://www.fciencias.unam.mx/)
 
 -----
 
